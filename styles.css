@@ -1,0 +1,208 @@
+#vc-wmc-player {
+    padding: 12px;
+    margin: 0;
+    border-bottom: 1px solid var(--border-subtle);
+
+    --vc-wmc-accent: var(--brand-500, #5865f2);
+    --vc-wmc-accent-90: color-mix(in hsl, var(--vc-wmc-accent), transparent 90%);
+    --vc-wmc-accent-80: color-mix(in hsl, var(--vc-wmc-accent), transparent 80%);
+}
+
+.vc-wmc-button {
+    margin: 0 2px;
+    border-radius: var(--radius-sm, 4px);
+    background: none;
+    color: var(--interactive-icon-default, var(--interactive-normal));
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vc-wmc-button:hover:not(:disabled) {
+    color: var(--interactive-icon-hover, var(--interactive-hover));
+    background-color: var(--background-mod-strong, var(--background-modifier-hover));
+}
+
+.vc-wmc-disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.vc-wmc-button-icon {
+    height: 24px;
+    width: 24px;
+}
+
+.vc-wmc-small .vc-wmc-button-icon {
+    width: 22px;
+    height: 22px;
+}
+
+.vc-wmc-toggled {
+    background-color: var(--vc-wmc-accent-90);
+}
+
+.vc-wmc-toggled:hover {
+    background-color: var(--vc-wmc-accent-80) !important;
+}
+
+.vc-wmc-repeat-1 {
+    font-size: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.vc-wmc-button-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+}
+
+#vc-wmc-info-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 3.5em;
+    gap: 0.7em;
+}
+
+#vc-wmc-album-image {
+    height: 90%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 3px;
+    transition: filter 0.2s;
+}
+
+#vc-wmc-album-image:hover {
+    filter: brightness(1.2);
+    cursor: pointer;
+}
+
+#vc-wmc-album-expanded-wrapper #vc-wmc-album-image {
+    width: 100%;
+    height: auto;
+}
+
+#vc-wmc-titles {
+    display: flex;
+    flex-direction: column;
+    padding: 0.2rem;
+    gap: 2px;
+    line-height: 1.2;
+    overflow: hidden;
+    flex: 1;
+    min-width: 0;
+}
+
+#vc-wmc-song-title {
+    color: var(--text-strong, var(--header-primary));
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.vc-wmc-secondary {
+    font-size: 12px;
+    color: var(--text-default, var(--text-normal));
+}
+
+.vc-wmc-ellipoverflow {
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
+}
+
+.vc-wmc-app {
+    align-self: flex-start;
+    flex-shrink: 0;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: var(--background-mod-subtle, var(--background-modifier-accent));
+}
+
+.vc-wmc-app-clickable {
+    cursor: pointer;
+}
+
+.vc-wmc-app-clickable:hover {
+    color: var(--text-default, var(--text-normal));
+}
+
+#vc-wmc-progress-bar {
+    position: relative;
+    color: var(--text-default, var(--text-normal));
+    width: 100%;
+    margin: 0.7em 0 5px;
+}
+
+#vc-wmc-progress-bar > [class*="slider"] {
+    flex-grow: 1;
+    width: 100%;
+    padding: 0 !important;
+}
+
+#vc-wmc-progress-bar > [class*="slider"] [class*="bar"] {
+    height: 3px !important;
+    top: calc(12px - 4px / 2 + var(--bar-offset));
+}
+
+#vc-wmc-progress-bar > [class*="slider"] [class*="barFill"] {
+    background-color: var(--interactive-icon-active, var(--interactive-active));
+}
+
+#vc-wmc-progress-bar:not(.vc-wmc-no-seek) > [class*="slider"]:hover [class*="barFill"] {
+    background-color: var(--vc-wmc-accent);
+}
+
+#vc-wmc-progress-bar > [class*="slider"] [class*="grabber"] {
+    height: 16px !important;
+    width: 16px !important;
+    margin-top: calc(17px / -2 + var(--bar-offset) / 2);
+    margin-left: -0.5px;
+    background-color: var(--interactive-icon-active, var(--interactive-active));
+    border-color: var(--interactive-icon-default, var(--interactive-normal));
+    opacity: 0;
+    transition: opacity 0.1s;
+}
+
+#vc-wmc-progress-bar:not(.vc-wmc-no-seek):hover > [class*="slider"] [class*="grabber"] {
+    opacity: 1;
+}
+
+.vc-wmc-no-seek > [class*="slider"] {
+    pointer-events: none;
+    opacity: 1 !important;
+}
+
+.vc-wmc-progress-time {
+    font-size: 12px;
+    top: 10px;
+    position: absolute;
+    margin-top: 8px;
+    font-family: var(--font-code);
+    font-weight: 500;
+}
+
+.vc-wmc-time-left {
+    left: 0;
+}
+
+.vc-wmc-time-right {
+    right: 0;
+}
+
+.vc-wmc-fallback {
+    padding: 0.5em;
+    color: var(--text-default, var(--text-normal));
+}
